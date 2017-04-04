@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/tgriesser/knex#readme"
-
-    >knex (v0.12.9)</a>
+    <a href="https://github.com/tgriesser/knex#readme">knex (v0.12.9)</a>
 </h1>
-<h4>A batteries-included SQL query & schema builder for Postgres, MySQL and SQLite3 and the Browser</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<h4>A batteries-included SQL query &amp; schema builder for Postgres, MySQL and SQLite3 and the Browser</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.knex">module knex</a><ol>
 
@@ -1335,26 +1328,26 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Client() {
-  var config = arguments.length &#x3c;= 0 || arguments[0] === undefined ? {} : arguments[0];
+  var config = arguments.length &lt;= 0 || arguments[0] === undefined ? {} : arguments[0];
 
   this.config = config;
 
-  //Client is a required field, so throw error if it&#x27;s not supplied.
-  //If &#x27;this.dialect&#x27; is set, then this is a &#x27;super()&#x27; call, in which case
-  //&#x27;client&#x27; does not have to be set as it&#x27;s already assigned on the client prototype.
-  if (!this.config.client &#x26;&#x26; !this.dialect) {
-    throw new Error(&#x27;knex: Required configuration option \&#x27;client\&#x27; is missing.&#x27;);
+  //Client is a required field, so throw error if it's not supplied.
+  //If 'this.dialect' is set, then this is a 'super()' call, in which case
+  //'client' does not have to be set as it's already assigned on the client prototype.
+  if (!this.config.client &amp;&amp; !this.dialect) {
+    throw new Error('knex: Required configuration option \'client\' is missing.');
   }
 
   this.connectionSettings = (0, _cloneDeep3.default)(config.connection || {});
-  if (this.driverName &#x26;&#x26; config.connection) {
+  if (this.driverName &amp;&amp; config.connection) {
     this.initializeDriver();
-    if (!config.pool || config.pool &#x26;&#x26; config.pool.max !== 0) {
+    if (!config.pool || config.pool &amp;&amp; config.pool.max !== 0) {
       this.__cid = clientId();
       this.initializePool(config);
     }
   }
-  this.valueForUndefined = this.raw(&#x27;DEFAULT&#x27;);
+  this.valueForUndefined = this.raw('DEFAULT');
   if (config.useNullAsDefault) {
     this.valueForUndefined = null;
   }
@@ -1389,7 +1382,7 @@ var formatter = this.client.<span class="apidocCodeKeywordSpan">formatter</span>
 
 if (Array.isArray(this.bindings)) {
   obj = replaceRawArrBindings(this, formatter);
-} else if (this.bindings &#x26;&#x26; (0, _isPlainObject3.default)(this.bindings)) {
+} else if (this.bindings &amp;&amp; (0, _isPlainObject3.default)(this.bindings)) {
   obj = replaceKeyBindings(this, formatter);
 } else {
   obj = {
@@ -1421,7 +1414,7 @@ if (Array.isArray(this.bindings)) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">raw = function (sql, bindings) {
-  (0, _helpers.warn)(&#x27;global Knex.raw is deprecated, use knex.raw (chain off an initialized knex object)&#x27;);
+  (0, _helpers.warn)('global Knex.raw is deprecated, use knex.raw (chain off an initialized knex object)');
   return new _raw2.default().set(sql, bindings);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -1432,11 +1425,11 @@ function FunctionHelper(client) {
 }
 
 FunctionHelper.prototype.now = function () {
-  return this.client.<span class="apidocCodeKeywordSpan">raw</span>(&#x27;CURRENT_TIMESTAMP&#x27;);
+  return this.client.<span class="apidocCodeKeywordSpan">raw</span>('CURRENT_TIMESTAMP');
 };
 
 exports.default = FunctionHelper;
-module.exports = exports[&#x27;default&#x27;];
+module.exports = exports['default'];
 ...</pre></li>
     </ul>
 
@@ -1454,14 +1447,14 @@ module.exports = exports[&#x27;default&#x27;];
   this.builder = builder;
   this.queries = [];
 
-  // The &#x22;connection&#x22; object is set on the runner when
-  // &#x22;run&#x22; is called.
+  // The "connection" object is set on the runner when
+  // "run" is called.
   this.connection = void 0;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   return (0, _map3.default)(data, function (statement) {
     return _this.client._formatQuery(statement.sql, statement.bindings, tz);
-  }).join(&#x27;;\n&#x27;);
+  }).join(';\n');
 };
 
 // Create a new instance of the `Runner`, passing in the current object.
@@ -1470,7 +1463,7 @@ Target.prototype.then = function () /* onFulfilled, onRejected */{
   return result.then.apply(result, arguments);
 };
 
-// Add additional &#x22;options&#x22; to the builder. Typically used for client specific
+// Add additional "options" to the builder. Typically used for client specific
 // items, like the `mysql` and `sqlite3` drivers.
 Target.prototype.options = function (opts) {
   this._options = this._options || [];
@@ -1491,14 +1484,14 @@ Target.prototype.options = function (opts) {
 
   var _this = (0, _possibleConstructorReturn3.default)(this, _EventEmitter.call(this));
 
-  var txid = _this.txid = (0, _uniqueId3.default)(&#x27;trx&#x27;);
+  var txid = _this.txid = (0, _uniqueId3.default)('trx');
 
   _this.client = client;
   _this.outerTx = outerTx;
   _this.trxClient = undefined;
-  _this._debug = client.config &#x26;&#x26; client.config.debug;
+  _this._debug = client.config &amp;&amp; client.config.debug;
 
-  debug(&#x27;%s: Starting %s transaction&#x27;, txid, outerTx ? &#x27;nested&#x27; : &#x27;top level&#x27;);
+  debug('%s: Starting %s transaction', txid, outerTx ? 'nested' : 'top level');
 
   _this._promise = _bluebird2.default.using(_this.acquireConnection(client, config, txid), function (connection) {
 
@@ -1508,8 +1501,8 @@ Target.prototype.options = function (opts) {
     init.then(function () {
       return makeTransactor(_this, connection, trxClient);
     }).then(function (transactor) {
-      // If we&#x27;ve returned a &#x22;thenable&#x22; from the transaction container, assume
-      // the rollback and commit are chained to this object&#x27;s success / failure.
+      // If we've returned a "thenable" from the transaction container, assume
+      // the rollback and commit are chained to this object's success / failure.
       // Directly thrown errors are treated as automatic rollbacks.
       var result = void 0;
       try {
@@ -1517,7 +1510,7 @@ Target.prototype.options = function (opts) {
       } catch (err) {
         result = _bluebird2.default.reject(err);
       }
-      if (result &#x26;&#x26; result.then &#x26;&#x26; typeof result.then === &#x27;function&#x27;) {
+      if (result &amp;&amp; result.then &amp;&amp; typeof result.then === 'function') {
         result.then(function (val) {
           return transactor.commit(val);
         }).catch(function (err) {
@@ -1537,7 +1530,7 @@ Target.prototype.options = function (opts) {
 
   _this._completed = false;
 
-  // If there&#x27;s a wrapping transaction, we need to wait for any older sibling
+  // If there's a wrapping transaction, we need to wait for any older sibling
   // transactions to settle (commit or rollback) before we can start, and we
   // need to register ourselves with the parent transaction so any younger
   // siblings can wait for us to complete before they can start.
@@ -1596,26 +1589,26 @@ if (trx.client.transacting) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Client() {
-  var config = arguments.length &#x3c;= 0 || arguments[0] === undefined ? {} : arguments[0];
+  var config = arguments.length &lt;= 0 || arguments[0] === undefined ? {} : arguments[0];
 
   this.config = config;
 
-  //Client is a required field, so throw error if it&#x27;s not supplied.
-  //If &#x27;this.dialect&#x27; is set, then this is a &#x27;super()&#x27; call, in which case
-  //&#x27;client&#x27; does not have to be set as it&#x27;s already assigned on the client prototype.
-  if (!this.config.client &#x26;&#x26; !this.dialect) {
-    throw new Error(&#x27;knex: Required configuration option \&#x27;client\&#x27; is missing.&#x27;);
+  //Client is a required field, so throw error if it's not supplied.
+  //If 'this.dialect' is set, then this is a 'super()' call, in which case
+  //'client' does not have to be set as it's already assigned on the client prototype.
+  if (!this.config.client &amp;&amp; !this.dialect) {
+    throw new Error('knex: Required configuration option \'client\' is missing.');
   }
 
   this.connectionSettings = (0, _cloneDeep3.default)(config.connection || {});
-  if (this.driverName &#x26;&#x26; config.connection) {
+  if (this.driverName &amp;&amp; config.connection) {
     this.initializeDriver();
-    if (!config.pool || config.pool &#x26;&#x26; config.pool.max !== 0) {
+    if (!config.pool || config.pool &amp;&amp; config.pool.max !== 0) {
       this.__cid = clientId();
       this.initializePool(config);
     }
   }
-  this.valueForUndefined = this.raw(&#x27;DEFAULT&#x27;);
+  this.valueForUndefined = this.raw('DEFAULT');
   if (config.useNullAsDefault) {
     this.valueForUndefined = null;
   }
@@ -1655,7 +1648,7 @@ if (trx.client.transacting) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function finalEscape(val) {
-  var ctx = arguments.length &#x3c;= 1 || arguments[1] === undefined ? {} : arguments[1];
+  var ctx = arguments.length &lt;= 1 || arguments[1] === undefined ? {} : arguments[1];
 
   return escapeFn(val, finalEscape, ctx);
 }</pre></li>
@@ -1677,8 +1670,8 @@ if (trx.client.transacting) {
   bindings = bindings == null ? [] : [].concat(bindings);
   var index = 0;
   return sql.replace(/\\?\?/g, function (match) {
-    if (match === &#x27;\\?&#x27;) {
-      return &#x27;?&#x27;;
+    if (match === '\\?') {
+      return '?';
     }
     if (index === bindings.length) {
       return match;
@@ -1696,7 +1689,7 @@ Target.prototype.toQuery = function (tz) {
   if (!(0, _isArray3.default)(data)) data = [data];
   return (0, _map3.default)(data, function (statement) {
     return _this.client.<span class="apidocCodeKeywordSpan">_formatQuery</span>(statement.sql, statement.bindings, tz);
-  }).join(&#x27;;\n&#x27;);
+  }).join(';\n');
 };
 
 // Create a new instance of the `Runner`, passing in the current object.
@@ -1720,13 +1713,13 @@ Target.prototype.then = function () /* onFulfilled, onRejected */{
 
   return new _bluebird2.default(function (resolver, rejecter) {
     if (!_this4.pool) {
-      return rejecter(new Error(&#x27;Unable to acquire a connection&#x27;));
+      return rejecter(new Error('Unable to acquire a connection'));
     }
     var wasRejected = false;
     var t = setTimeout(function () {
       wasRejected = true;
-      rejecter(new _bluebird2.default.TimeoutError(&#x27;Knex: Timeout acquiring a connection. The pool is probably full. &#x27; + &#x27;Are you
- missing a .transacting(trx) call?&#x27;));
+      rejecter(new _bluebird2.default.TimeoutError('Knex: Timeout acquiring a connection. The pool is probably full. ' + 'Are you
+ missing a .transacting(trx) call?'));
     }, _this4.config.acquireConnectionTimeout || 60000);
     _this4.pool.acquire(function (err, connection) {
       clearTimeout(t);
@@ -1736,14 +1729,14 @@ Target.prototype.then = function () /* onFulfilled, onRejected */{
       if (wasRejected) {
         _this4.pool.release(connection);
       } else {
-        debug(&#x27;acquired connection from pool: %s&#x27;, connection.__knexUid);
+        debug('acquired connection from pool: %s', connection.__knexUid);
         resolver(connection);
       }
     });
   });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  // Check whether there&#x27;s a transaction flag, and that it has a connection.
+  // Check whether there's a transaction flag, and that it has a connection.
   ensureConnection: function ensureConnection() {
 var _this2 = this;
 
@@ -1773,15 +1766,15 @@ TimeoutError, function (error) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function assertCanCancelQuery() {
   if (!this.canCancelQuery) {
-    throw new Error(&#x22;Query cancelling not supported for this dialect&#x22;);
+    throw new Error("Query cancelling not supported for this dialect");
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  var _ref = arguments.length &#x3c;= 1 || arguments[1] === undefined ? {} : arguments[1];
+  var _ref = arguments.length &lt;= 1 || arguments[1] === undefined ? {} : arguments[1];
 
   var cancel = _ref.cancel;
 
-  if ((0, _isNumber3.default)(ms) &#x26;&#x26; ms &#x3e; 0) {
+  if ((0, _isNumber3.default)(ms) &amp;&amp; ms &gt; 0) {
     this._timeout = ms;
     if (cancel) {
       this.client.<span class="apidocCodeKeywordSpan">assertCanCancelQuery</span>();
@@ -1803,7 +1796,7 @@ TimeoutError, function (error) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function cancelQuery() {
-  throw new Error(&#x22;Query cancelling not supported for this dialect&#x22;);
+  throw new Error("Query cancelling not supported for this dialect");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 var timeout = obj.timeout;
@@ -1894,7 +1887,7 @@ return cancelQuery.catch(function (cancelError) {
   });
 
   // Allow either a callback or promise interface for destruction.
-  if (typeof callback === &#x27;function&#x27;) {
+  if (typeof callback === 'function') {
     promise.asCallback(callback);
   } else {
     return promise;
@@ -1927,7 +1920,7 @@ var formatter = this.client.<span class="apidocCodeKeywordSpan">formatter</span>
 
 if (Array.isArray(this.bindings)) {
   obj = replaceRawArrBindings(this, formatter);
-} else if (this.bindings &#x26;&#x26; (0, _isPlainObject3.default)(this.bindings)) {
+} else if (this.bindings &amp;&amp; (0, _isPlainObject3.default)(this.bindings)) {
   obj = replaceKeyBindings(this, formatter);
 } else {
   obj = {
@@ -1947,7 +1940,7 @@ if (Array.isArray(this.bindings)) {
   try {
     this.driver = this._driver();
   } catch (e) {
-    helpers.exit(&#x27;Knex: run\n$ npm install &#x27; + this.driverName + &#x27; --save\n&#x27; + e.stack);
+    helpers.exit('Knex: run\n$ npm install ' + this.driverName + ' --save\n' + e.stack);
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1964,7 +1957,7 @@ if (Array.isArray(this.bindings)) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function initializePool(config) {
   if (this.pool) {
-    helpers.warn(&#x27;The pool has already been initialized&#x27;);
+    helpers.warn('The pool has already been initialized');
     return;
   }
   this.pool = new _genericPool.Pool((0, _assign3.default)(this.poolDefaults(config.pool || {}), config.pool));
@@ -1984,20 +1977,20 @@ if (Array.isArray(this.bindings)) {
     <li>description and source-code<pre class="apidocCodePre">function poolDefaults(poolConfig) {
   var _this3 = this;
 
-  var name = this.dialect + &#x27;:&#x27; + this.driverName + &#x27;:&#x27; + this.__cid;
+  var name = this.dialect + ':' + this.driverName + ':' + this.__cid;
   return {
     min: 2,
     max: 10,
     name: name,
     log: function log(str, level) {
-      if (level === &#x27;info&#x27;) {
-        debugPool(level.toUpperCase() + &#x27; pool &#x27; + name + &#x27; - &#x27; + str);
+      if (level === 'info') {
+        debugPool(level.toUpperCase() + ' pool ' + name + ' - ' + str);
       }
     },
 
     create: function create(callback) {
       _this3.acquireRawConnection().tap(function (connection) {
-        connection.__knexUid = (0, _uniqueId3.default)(&#x27;__knexUid&#x27;);
+        connection.__knexUid = (0, _uniqueId3.default)('__knexUid');
         if (poolConfig.afterCreate) {
           return _bluebird2.default.promisify(poolConfig.afterCreate)(connection);
         }
@@ -2005,8 +1998,8 @@ if (Array.isArray(this.bindings)) {
     },
     destroy: function destroy(connection) {
       if (poolConfig.beforeDestroy) {
-        helpers.warn(&#x27;\n            beforeDestroy is deprecated, please open an issue if you use this\n            to discuss alternative
- apis\n          &#x27;);
+        helpers.warn('\n            beforeDestroy is deprecated, please open an issue if you use this\n            to discuss alternative
+ apis\n          ');
         poolConfig.beforeDestroy(connection, function () {});
       }
       if (connection !== void 0) {
@@ -2015,7 +2008,7 @@ if (Array.isArray(this.bindings)) {
     },
     validate: function validate(connection) {
       if (connection.__knex__disposed) {
-        helpers.warn(&#x27;Connection Error: &#x27; + connection.__knex__disposed);
+        helpers.warn('Connection Error: ' + connection.__knex__disposed);
         return false;
       }
       return _this3.validateConnection(connection);
@@ -2052,14 +2045,14 @@ if (Array.isArray(this.bindings)) {
     <li>description and source-code<pre class="apidocCodePre">function query(connection, obj) {
   var _this2 = this;
 
-  if (typeof obj === &#x27;string&#x27;) obj = { sql: obj };
+  if (typeof obj === 'string') obj = { sql: obj };
   obj.bindings = this.prepBindings(obj.bindings);
   debugQuery(obj.sql);
-  this.emit(&#x27;query&#x27;, (0, _assign3.default)({ __knexUid: connection.__knexUid }, obj));
+  this.emit('query', (0, _assign3.default)({ __knexUid: connection.__knexUid }, obj));
   debugBindings(obj.bindings);
   return this._query(connection, obj).catch(function (err) {
-    err.message = _this2._formatQuery(obj.sql, obj.bindings) + &#x27; - &#x27; + err.message;
-    _this2.emit(&#x27;query-error&#x27;, err, (0, _assign3.default)({ __knexUid: connection.__knexUid }, obj));
+    err.message = _this2._formatQuery(obj.sql, obj.bindings) + ' - ' + err.message;
+    _this2.emit('query-error', err, (0, _assign3.default)({ __knexUid: connection.__knexUid }, obj));
     throw err;
   });
 }</pre></li>
@@ -2074,11 +2067,11 @@ if (Array.isArray(this.bindings)) {
   return runner.<span class="apidocCodeKeywordSpan">query</span>(sql);
 })
 
-// If there are any &#x22;error&#x22; listeners, we fire an error event
+// If there are any "error" listeners, we fire an error event
 // and then re-throw the error to be eventually handled by
-// the promise chain. Useful if you&#x27;re wrapping in a custom `Promise`.
+// the promise chain. Useful if you're wrapping in a custom `Promise`.
 .catch(function (err) {
-  if (runner.builder._events &#x26;&#x26; runner.builder._events.error) {
+  if (runner.builder._events &amp;&amp; runner.builder._events.error) {
 ...</pre></li>
     </ul>
 
@@ -2109,7 +2102,7 @@ callback.call(builder, builder);
 var compiler = client.queryCompiler(builder);
 compiler.formatter = this;
 
-// Return the compiled &#x26; parameterized sql.
+// Return the compiled &amp; parameterized sql.
 ...</pre></li>
     </ul>
 
@@ -2127,7 +2120,7 @@ compiler.formatter = this;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   }
-  return this.unwrapRaw(value, true) || &#x27;?&#x27;;
+  return this.unwrapRaw(value, true) || '?';
 };
 
 Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
@@ -2166,11 +2159,11 @@ function FunctionHelper(client) {
 }
 
 FunctionHelper.prototype.now = function () {
-  return this.client.<span class="apidocCodeKeywordSpan">raw</span>(&#x27;CURRENT_TIMESTAMP&#x27;);
+  return this.client.<span class="apidocCodeKeywordSpan">raw</span>('CURRENT_TIMESTAMP');
 };
 
 exports.default = FunctionHelper;
-module.exports = exports[&#x27;default&#x27;];
+module.exports = exports['default'];
 ...</pre></li>
     </ul>
 
@@ -2187,7 +2180,7 @@ module.exports = exports[&#x27;default&#x27;];
   var _this5 = this;
 
   return new _bluebird2.default(function (resolver) {
-    debug(&#x27;releasing connection to pool: %s&#x27;, connection.__knexUid);
+    debug('releasing connection to pool: %s', connection.__knexUid);
     _this5.pool.release(connection);
     resolver();
   });
@@ -2206,7 +2199,7 @@ module.exports = exports[&#x27;default&#x27;];
 });
 
 exports.default = Runner;
-module.exports = exports[&#x27;default&#x27;];
+module.exports = exports['default'];
 ...</pre></li>
     </ul>
 
@@ -2225,7 +2218,7 @@ module.exports = exports[&#x27;default&#x27;];
     <li>example usage<pre class="apidocCodePre">...
   return (0, _map3.default)(data, function (statement) {
     return _this.client._formatQuery(statement.sql, statement.bindings, tz);
-  }).join(&#x27;;\n&#x27;);
+  }).join(';\n');
 };
 
 // Create a new instance of the `Runner`, passing in the current object.
@@ -2234,7 +2227,7 @@ Target.prototype.then = function () /* onFulfilled, onRejected */{
   return result.then.apply(result, arguments);
 };
 
-// Add additional &#x22;options&#x22; to the builder. Typically used for client specific
+// Add additional "options" to the builder. Typically used for client specific
 // items, like the `mysql` and `sqlite3` drivers.
 Target.prototype.options = function (opts) {
   this._options = this._options || [];
@@ -2281,8 +2274,8 @@ Target.prototype.options = function (opts) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function stream(connection, obj, _stream, options) {
-  if (typeof obj === &#x27;string&#x27;) obj = { sql: obj };
-  this.emit(&#x27;query&#x27;, (0, _assign3.default)({ __knexUid: connection.__knexUid }, obj));
+  if (typeof obj === 'string') obj = { sql: obj };
+  this.emit('query', (0, _assign3.default)({ __knexUid: connection.__knexUid }, obj));
   debugQuery(obj.sql);
   obj.bindings = this.prepBindings(obj.bindings);
   debugBindings(obj.bindings);
@@ -2299,7 +2292,7 @@ Target.prototype.stream = function (options) {
   return this.client.runner(this).<span class="apidocCodeKeywordSpan">stream</span>(options);
 };
 
-// Initialize a stream &#x26; pipe automatically.
+// Initialize a stream &amp; pipe automatically.
 Target.prototype.pipe = function (writable, options) {
   return this.client.runner(this).pipe(writable, options);
 };
@@ -2346,7 +2339,7 @@ Target.prototype.pipe = function (writable, options) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function toString() {
-  return &#x27;[object KnexClient]&#x27;;
+  return '[object KnexClient]';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2407,21 +2400,21 @@ if (trx.client.transacting) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function wrapIdentifier(value) {
-  return value !== &#x27;*&#x27; ? &#x27;&#x22;&#x27; + value.replace(/&#x22;/g, &#x27;&#x22;&#x22;&#x27;) + &#x27;&#x22;&#x27; : &#x27;*&#x27;;
+  return value !== '*' ? '"' + value.replace(/"/g, '""') + '"' : '*';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   var raw = this.unwrapRaw(value);
   if (raw) return raw;
-  if (typeof value === &#x27;number&#x27;) return value;
-  return this._wrapString(value + &#x27;&#x27;);
+  if (typeof value === 'number') return value;
+  return this._wrapString(value + '');
 };
 
 Formatter.prototype.wrapAsIdentifier = function wrapAsIdentifier(value) {
-  return this.client.<span class="apidocCodeKeywordSpan">wrapIdentifier</span>((value || &#x27;&#x27;).trim());
+  return this.client.<span class="apidocCodeKeywordSpan">wrapIdentifier</span>((value || '').trim());
 };
 
 Formatter.prototype.alias = function alias(first, second) {
-  return first + &#x27; as &#x27; + second;
+  return first + ' as ' + second;
 };
 
 // The operator method takes a value and returns something or other.
@@ -2460,7 +2453,7 @@ var formatter = this.client.<span class="apidocCodeKeywordSpan">formatter</span>
 
 if (Array.isArray(this.bindings)) {
   obj = replaceRawArrBindings(this, formatter);
-} else if (this.bindings &#x26;&#x26; (0, _isPlainObject3.default)(this.bindings)) {
+} else if (this.bindings &amp;&amp; (0, _isPlainObject3.default)(this.bindings)) {
   obj = replaceKeyBindings(this, formatter);
 } else {
   obj = {
@@ -2482,7 +2475,7 @@ if (Array.isArray(this.bindings)) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function _wrapString(value) {
-  var asIndex = value.toLowerCase().indexOf(&#x27; as &#x27;);
+  var asIndex = value.toLowerCase().indexOf(' as ');
   if (asIndex !== -1) {
     var first = value.slice(0, asIndex);
     var second = value.slice(asIndex + 4);
@@ -2490,30 +2483,30 @@ if (Array.isArray(this.bindings)) {
   }
   var wrapped = [];
   var i = -1;
-  var segments = value.split(&#x27;.&#x27;);
-  while (++i &#x3c; segments.length) {
+  var segments = value.split('.');
+  while (++i &lt; segments.length) {
     value = segments[i];
-    if (i === 0 &#x26;&#x26; segments.length &#x3e; 1) {
-      wrapped.push(this.wrap((value || &#x27;&#x27;).trim()));
+    if (i === 0 &amp;&amp; segments.length &gt; 1) {
+      wrapped.push(this.wrap((value || '').trim()));
     } else {
-      wrapped.push(this.client.wrapIdentifier((value || &#x27;&#x27;).trim()));
+      wrapped.push(this.client.wrapIdentifier((value || '').trim()));
     }
   }
-  return wrapped.join(&#x27;.&#x27;);
+  return wrapped.join('.');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 Formatter.prototype.wrap = function wrap(value) {
-  if (typeof value === &#x27;function&#x27;) {
+  if (typeof value === 'function') {
     return this.outputQuery(this.compileCallback(value), true);
   }
   var raw = this.unwrapRaw(value);
   if (raw) return raw;
-  if (typeof value === &#x27;number&#x27;) return value;
-  return this.<span class="apidocCodeKeywordSpan">_wrapString</span>(value + &#x27;&#x27;);
+  if (typeof value === 'number') return value;
+  return this.<span class="apidocCodeKeywordSpan">_wrapString</span>(value + '');
 };
 
 Formatter.prototype.wrapAsIdentifier = function wrapAsIdentifier(value) {
-  return this.client.wrapIdentifier((value || &#x27;&#x27;).trim());
+  return this.client.wrapIdentifier((value || '').trim());
 };
 
 Formatter.prototype.alias = function alias(first, second) {
@@ -2530,24 +2523,24 @@ Formatter.prototype.alias = function alias(first, second) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function alias(first, second) {
-  return first + &#x27; as &#x27; + second;
+  return first + ' as ' + second;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 
 Formatter.prototype.outputQuery = function outputQuery(compiled, isParameter) {
-  var sql = compiled.sql || &#x27;&#x27;;
+  var sql = compiled.sql || '';
   if (sql) {
-    if ((compiled.method === &#x27;select&#x27; || compiled.method === &#x27;first&#x27;) &#x26;&#x26; (isParameter || compiled.
+    if ((compiled.method === 'select' || compiled.method === 'first') &amp;&amp; (isParameter || compiled.
 as)) {
-      sql = &#x27;(&#x27; + sql + &#x27;)&#x27;;
+      sql = '(' + sql + ')';
       if (compiled.as) return this.<span class="apidocCodeKeywordSpan">alias</span>(sql, this.wrap(compiled.as));
     }
   }
   return sql;
 };
 
-// Coerce to string to prevent strange errors when it&#x27;s not a string.
+// Coerce to string to prevent strange errors when it's not a string.
 ...</pre></li>
     </ul>
 
@@ -2561,30 +2554,30 @@ as)) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function columnize(target) {
-  var columns = typeof target === &#x27;string&#x27; ? [target] : target;
-  var str = &#x27;&#x27;,
+  var columns = typeof target === 'string' ? [target] : target;
+  var str = '',
       i = -1;
-  while (++i &#x3c; columns.length) {
-    if (i &#x3e; 0) str += &#x27;, &#x27;;
+  while (++i &lt; columns.length) {
+    if (i &gt; 0) str += ', ';
     str += this.wrap(columns[i]);
   }
   return str;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  if (match === &#x27;\\?&#x27;) {
+  if (match === '\\?') {
     return match;
   }
 
   var value = values[index++];
 
-  if (match === &#x27;??&#x27;) {
+  if (match === '??') {
     return formatter.<span class="apidocCodeKeywordSpan">columnize</span>(value);
   }
   return formatter.parameter(value);
 });
 
 if (expectedBindings !== index) {
-  throw new Error(&#x27;Expected &#x27; + expectedBindings + &#x27; bindings, saw &#x27; + index);
+  throw new Error('Expected ' + expectedBindings + ' bindings, saw ' + index);
 }
 ...</pre></li>
     </ul>
@@ -2610,20 +2603,20 @@ if (expectedBindings !== index) {
   var compiler = client.queryCompiler(builder);
   compiler.formatter = this;
 
-  // Return the compiled &#x26; parameterized sql.
-  return compiler.toSQL(method || &#x27;select&#x27;);
+  // Return the compiled &amp; parameterized sql.
+  return compiler.toSQL(method || 'select');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 // Checks whether a value is a function... if it is, we compile it
-// otherwise we check whether it&#x27;s a raw
+// otherwise we check whether it's a raw
 
 
 Formatter.prototype.parameter = function parameter(value) {
-  if (typeof value === &#x27;function&#x27;) {
+  if (typeof value === 'function') {
     return this.outputQuery(this.<span class="apidocCodeKeywordSpan">compileCallback</span>(value), true);
   }
-  return this.unwrapRaw(value, true) || &#x27;?&#x27;;
+  return this.unwrapRaw(value, true) || '?';
 };
 
 Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
@@ -2644,7 +2637,7 @@ Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
     <li>description and source-code<pre class="apidocCodePre">function direction(value) {
   var raw = this.unwrapRaw(value);
   if (raw) return raw;
-  return orderBys.indexOf((value || &#x27;&#x27;).toLowerCase()) !== -1 ? value : &#x27;asc&#x27;;
+  return orderBys.indexOf((value || '').toLowerCase()) !== -1 ? value : 'asc';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2661,8 +2654,8 @@ Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
     <li>description and source-code<pre class="apidocCodePre">function operator(value) {
   var raw = this.unwrapRaw(value);
   if (raw) return raw;
-  if (operators[(value || &#x27;&#x27;).toLowerCase()] !== true) {
-    throw new TypeError(&#x27;The operator &#x22;&#x27; + value + &#x27;&#x22; is not permitted&#x27;);
+  if (operators[(value || '').toLowerCase()] !== true) {
+    throw new TypeError('The operator "' + value + '" is not permitted');
   }
   return value;
 }</pre></li>
@@ -2679,10 +2672,10 @@ Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function outputQuery(compiled, isParameter) {
-  var sql = compiled.sql || &#x27;&#x27;;
+  var sql = compiled.sql || '';
   if (sql) {
-    if ((compiled.method === &#x27;select&#x27; || compiled.method === &#x27;first&#x27;) &#x26;&#x26; (isParameter || compiled.as)) {
-      sql = &#x27;(&#x27; + sql + &#x27;)&#x27;;
+    if ((compiled.method === 'select' || compiled.method === 'first') &amp;&amp; (isParameter || compiled.as)) {
+      sql = '(' + sql + ')';
       if (compiled.as) return this.alias(sql, this.wrap(compiled.as));
     }
   }
@@ -2691,14 +2684,14 @@ Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
     <li>example usage<pre class="apidocCodePre">...
 
 // Checks whether a value is a function... if it is, we compile it
-// otherwise we check whether it&#x27;s a raw
+// otherwise we check whether it's a raw
 
 
 Formatter.prototype.parameter = function parameter(value) {
-  if (typeof value === &#x27;function&#x27;) {
+  if (typeof value === 'function') {
     return this.<span class="apidocCodeKeywordSpan">outputQuery</span>(this.compileCallback(value), true);
   }
-  return this.unwrapRaw(value, true) || &#x27;?&#x27;;
+  return this.unwrapRaw(value, true) || '?';
 };
 
 Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
@@ -2717,25 +2710,25 @@ Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function parameter(value) {
-  if (typeof value === &#x27;function&#x27;) {
+  if (typeof value === 'function') {
     return this.outputQuery(this.compileCallback(value), true);
   }
-  return this.unwrapRaw(value, true) || &#x27;?&#x27;;
+  return this.unwrapRaw(value, true) || '?';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 };
 
-// Turns a list of values into a list of ?&#x27;s, joining them with commas unless
-// a &#x22;joining&#x22; value is specified (e.g. &#x27; and &#x27;)
+// Turns a list of values into a list of ?'s, joining them with commas unless
+// a "joining" value is specified (e.g. ' and ')
 
 
 Formatter.prototype.parameterize = function parameterize(values, notSetValue) {
-  if (typeof values === &#x27;function&#x27;) return this.<span class="apidocCodeKeywordSpan">parameter</span>(values);
+  if (typeof values === 'function') return this.<span class="apidocCodeKeywordSpan">parameter</span>(values);
   values = Array.isArray(values) ? values : [values];
-  var str = &#x27;&#x27;,
+  var str = '',
       i = -1;
-  while (++i &#x3c; values.length) {
-    if (i &#x3e; 0) str += &#x27;, &#x27;;
+  while (++i &lt; values.length) {
+    if (i &gt; 0) str += ', ';
     str += this.parameter(values[i] === undefined ? notSetValue : values[i]);
   }
 ...</pre></li>
@@ -2751,12 +2744,12 @@ Formatter.prototype.parameterize = function parameterize(values, notSetValue) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function parameterize(values, notSetValue) {
-  if (typeof values === &#x27;function&#x27;) return this.parameter(values);
+  if (typeof values === 'function') return this.parameter(values);
   values = Array.isArray(values) ? values : [values];
-  var str = &#x27;&#x27;,
+  var str = '',
       i = -1;
-  while (++i &#x3c; values.length) {
-    if (i &#x3e; 0) str += &#x27;, &#x27;;
+  while (++i &lt; values.length) {
+    if (i &gt; 0) str += ', ';
     str += this.parameter(values[i] === undefined ? notSetValue : values[i]);
   }
   return str;
@@ -2774,10 +2767,10 @@ Formatter.prototype.parameterize = function parameterize(values, notSetValue) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function rawOrFn(value, method) {
-  if (typeof value === &#x27;function&#x27;) {
+  if (typeof value === 'function') {
     return this.outputQuery(this.compileCallback(value, method));
   }
-  return this.unwrapRaw(value) || &#x27;&#x27;;
+  return this.unwrapRaw(value) || '';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2813,14 +2806,14 @@ Formatter.prototype.parameterize = function parameterize(values, notSetValue) {
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-// otherwise we check whether it&#x27;s a raw
+// otherwise we check whether it's a raw
 
 
 Formatter.prototype.parameter = function parameter(value) {
-  if (typeof value === &#x27;function&#x27;) {
+  if (typeof value === 'function') {
     return this.outputQuery(this.compileCallback(value), true);
   }
-  return this.<span class="apidocCodeKeywordSpan">unwrapRaw</span>(value, true) || &#x27;?&#x27;;
+  return this.<span class="apidocCodeKeywordSpan">unwrapRaw</span>(value, true) || '?';
 };
 
 Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
@@ -2841,29 +2834,29 @@ Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function wrap(value) {
-  if (typeof value === &#x27;function&#x27;) {
+  if (typeof value === 'function') {
     return this.outputQuery(this.compileCallback(value), true);
   }
   var raw = this.unwrapRaw(value);
   if (raw) return raw;
-  if (typeof value === &#x27;number&#x27;) return value;
-  return this._wrapString(value + &#x27;&#x27;);
+  if (typeof value === 'number') return value;
+  return this._wrapString(value + '');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 Formatter.prototype.columnize = function columnize(target) {
-  var columns = typeof target === &#x27;string&#x27; ? [target] : target;
-  var str = &#x27;&#x27;,
+  var columns = typeof target === 'string' ? [target] : target;
+  var str = '',
       i = -1;
-  while (++i &#x3c; columns.length) {
-    if (i &#x3e; 0) str += &#x27;, &#x27;;
+  while (++i &lt; columns.length) {
+    if (i &gt; 0) str += ', ';
     str += this.<span class="apidocCodeKeywordSpan">wrap</span>(columns[i]);
   }
   return str;
 };
 
-// Turns a list of values into a list of ?&#x27;s, joining them with commas unless
-// a &#x22;joining&#x22; value is specified (e.g. &#x27; and &#x27;)
+// Turns a list of values into a list of ?'s, joining them with commas unless
+// a "joining" value is specified (e.g. ' and ')
 ...</pre></li>
     </ul>
 
@@ -2877,13 +2870,13 @@ Formatter.prototype.columnize = function columnize(target) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function wrapAsIdentifier(value) {
-  return this.client.wrapIdentifier((value || &#x27;&#x27;).trim());
+  return this.client.wrapIdentifier((value || '').trim());
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 
   Formatter.prototype._wrapString = function _wrapString(value) {
-var asIndex = value.toLowerCase().indexOf(&#x27; as &#x27;);
+var asIndex = value.toLowerCase().indexOf(' as ');
 if (asIndex !== -1) {
   var first = value.slice(0, asIndex);
   var second = value.slice(asIndex + 4);
@@ -2891,10 +2884,10 @@ if (asIndex !== -1) {
 }
 var wrapped = [];
 var i = -1;
-var segments = value.split(&#x27;.&#x27;);
-while (++i &#x3c; segments.length) {
+var segments = value.split('.');
+while (++i &lt; segments.length) {
   value = segments[i];
-  if (i === 0 &#x26;&#x26; segments.length &#x3e; 1) {
+  if (i === 0 &amp;&amp; segments.length &gt; 1) {
 ...</pre></li>
     </ul>
 
@@ -2933,7 +2926,7 @@ while (++i &#x3c; segments.length) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">now = function () {
-  return this.client.raw(&#x27;CURRENT_TIMESTAMP&#x27;);
+  return this.client.raw('CURRENT_TIMESTAMP');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2959,13 +2952,13 @@ while (++i &#x3c; segments.length) {
 
   if ((0, _isTypedArray3.default)(mixed)) return false;
 
-  if (mixed &#x26;&#x26; (0, _isFunction3.default)(mixed.toSQL)) {
+  if (mixed &amp;&amp; (0, _isFunction3.default)(mixed.toSQL)) {
     //Any QueryBuilder or Raw will automatically be validated during compile.
     return argContainsUndefined;
   }
 
   if ((0, _isArray3.default)(mixed)) {
-    for (var i = 0; i &#x3c; mixed.length; i++) {
+    for (var i = 0; i &lt; mixed.length; i++) {
       if (argContainsUndefined) break;
       argContainsUndefined = this.containsUndefined(mixed[i]);
     }
@@ -2986,7 +2979,7 @@ while (++i &#x3c; segments.length) {
 }
 
 if ((0, _isArray3.default)(mixed)) {
-  for (var i = 0; i &#x3c; mixed.length; i++) {
+  for (var i = 0; i &lt; mixed.length; i++) {
     if (argContainsUndefined) break;
     argContainsUndefined = this.<span class="apidocCodeKeywordSpan">containsUndefined</span>(mixed[i]);
   }
@@ -3014,8 +3007,8 @@ if ((0, _isArray3.default)(mixed)) {
     <li>example usage<pre class="apidocCodePre">...
   runner.connection = connection;
 
-  runner.client.emit(&#x27;start&#x27;, runner.builder);
-  runner.builder.emit(&#x27;start&#x27;, runner.builder);
+  runner.client.emit('start', runner.builder);
+  runner.builder.emit('start', runner.builder);
   var sql = runner.builder.toSQL();
 
   if (runner.builder._debug) {
@@ -3040,7 +3033,7 @@ if ((0, _isArray3.default)(mixed)) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function deprecate(method, alternate) {
-  warn(method + &#x27; is deprecated, please use &#x27; + alternate);
+  warn(method + ' is deprecated, please use ' + alternate);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -3055,7 +3048,7 @@ if ((0, _isArray3.default)(mixed)) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function error(msg) {
-  console.log(_chalk2.default.red(&#x27;Knex:Error &#x27; + msg));
+  console.log(_chalk2.default.red('Knex:Error ' + msg));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 // .map over the results
@@ -3085,9 +3078,9 @@ if ((0, _isArray3.default)(mixed)) {
   process.exit(1);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-// Used to warn about incorrect use, without error&#x27;ing
+// Used to warn about incorrect use, without error'ing
 function warn(msg) {
-console.log(_chalk2.default.yellow(&#x27;Knex:warning - &#x27; + msg));
+console.log(_chalk2.default.yellow('Knex:warning - ' + msg));
 }
 
 function exit(msg) {
@@ -3113,7 +3106,7 @@ if ((0, _isTypedArray3.default)(mixed)) return false;
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function normalizeArr() {
   var args = new Array(arguments.length);
-  for (var i = 0; i &#x3c; args.length; i++) {
+  for (var i = 0; i &lt; args.length; i++) {
     args[i] = arguments[i];
   }
   if (Array.isArray(args[0])) {
@@ -3151,7 +3144,7 @@ if ((0, _isTypedArray3.default)(mixed)) return false;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function warn(msg) {
-  console.log(_chalk2.default.yellow(&#x27;Knex:warning - &#x27; + msg));
+  console.log(_chalk2.default.yellow('Knex:warning - ' + msg));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   return this;
@@ -3159,9 +3152,9 @@ if ((0, _isTypedArray3.default)(mixed)) return false;
 
 // Set the transaction object for this query.
 Target.prototype.transacting = function (t) {
-  if (t &#x26;&#x26; t.client) {
+  if (t &amp;&amp; t.client) {
     if (!t.client.transacting) {
-      helpers.<span class="apidocCodeKeywordSpan">warn</span>(&#x27;Invalid transaction value: &#x27; + t.client);
+      helpers.<span class="apidocCodeKeywordSpan">warn</span>('Invalid transaction value: ' + t.client);
     } else {
       this.client = t.client;
     }
@@ -3186,17 +3179,17 @@ Target.prototype.transacting = function (t) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Raw() {
-  var client = arguments.length &#x3c;= 0 || arguments[0] === undefined ? fakeClient : arguments[0];
+  var client = arguments.length &lt;= 0 || arguments[0] === undefined ? fakeClient : arguments[0];
 
   this.client = client;
 
-  this.sql = &#x27;&#x27;;
+  this.sql = '';
   this.bindings = [];
 
   // Todo: Deprecate
   this._wrappedBefore = undefined;
   this._wrappedAfter = undefined;
-  this._debug = client &#x26;&#x26; client.config &#x26;&#x26; client.config.debug;
+  this._debug = client &amp;&amp; client.config &amp;&amp; client.config.debug;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 // FunctionHelper
@@ -3206,11 +3199,11 @@ function FunctionHelper(client) {
 }
 
 FunctionHelper.prototype.now = function () {
-  return this.client.<span class="apidocCodeKeywordSpan">raw</span>(&#x27;CURRENT_TIMESTAMP&#x27;);
+  return this.client.<span class="apidocCodeKeywordSpan">raw</span>('CURRENT_TIMESTAMP');
 };
 
 exports.default = FunctionHelper;
-module.exports = exports[&#x27;default&#x27;];
+module.exports = exports['default'];
 ...</pre></li>
     </ul>
 
@@ -3268,7 +3261,7 @@ module.exports = exports[&#x27;default&#x27;];
   });
 }),
 
-// In the case of the &#x22;schema builder&#x22; we call `queryArray`, which runs each
+// In the case of the "schema builder" we call `queryArray`, which runs each
 // of the queries in sequence.
 queryArray: function queryArray(queries) {
   return queries.length === 1 ? this.query(queries[0]) : _bluebird2.default.<span class="apidocCodeKeywordSpan">bind</span>(this
@@ -3421,9 +3414,9 @@ queryArray: function queryArray(queries) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 .then(function() {
-  return knex(&#x27;users&#x27;)
-    .join(&#x27;accounts&#x27;, &#x27;users.id&#x27;, &#x27;accounts.user_id&#x27;)
-    .select(&#x27;users.user_name as user&#x27;, &#x27;accounts.account_name as account&#x27;);
+  return knex('users')
+    .join('accounts', 'users.id', 'accounts.user_id')
+    .select('users.user_name as user', 'accounts.account_name as account');
 })
 
 // .map over the results
@@ -3489,16 +3482,16 @@ Target.prototype.stream = function (options) {
   return this.client.runner(this).stream(options);
 };
 
-// Initialize a stream &#x26; pipe automatically.
+// Initialize a stream &amp; pipe automatically.
 Target.prototype.pipe = function (writable, options) {
   return this.client.runner(this).<span class="apidocCodeKeywordSpan">pipe</span>(writable, options);
 };
 
-// Creates a method which &#x22;coerces&#x22; to a promise, by calling a
-// &#x22;then&#x22; method on the current `Target`
-(0, _each3.default)([&#x27;bind&#x27;, &#x27;catch&#x27;, &#x27;finally&#x27;, &#x27;asCallback&#x27;, &#x27;spread&#x27;, &#x27
-;map&#x27;, &#x27;reduce&#x27;, &#x27;tap&#x27;, &#x27;thenReturn&#x27;, &#x27;return&#x27;, &#x27;yield&#x27;, &#x27;ensure&#x27
-;, &#x27;reflect&#x27;, &#x27;get&#x27;, &#x27;mapSeries&#x27;, &#x27;delay&#x27;], function (method) {
+// Creates a method which "coerces" to a promise, by calling a
+// "then" method on the current `Target`
+(0, _each3.default)(['bind', 'catch', 'finally', 'asCallback', 'spread', '
+;map', 'reduce', 'tap', 'thenReturn', 'return', 'yield', 'ensure'
+;, 'reflect', 'get', 'mapSeries', 'delay'], function (method) {
   Target.prototype[method] = function () {
     var promise = this.then();
 ...</pre></li>
@@ -3522,7 +3515,7 @@ Target.prototype.pipe = function (writable, options) {
   });
 }),
 
-// In the case of the &#x22;schema builder&#x22; we call `queryArray`, which runs each
+// In the case of the "schema builder" we call `queryArray`, which runs each
 // of the queries in sequence.
 queryArray: function queryArray(queries) {
   return queries.length === 1 ? this.query(queries[0]) : _bluebird2.default.bind(this).return(queries).<span class="apidocCodeKeywordSpan
@@ -3570,7 +3563,7 @@ queryArray: function queryArray(queries) {
   });
 }),
 
-// In the case of the &#x22;schema builder&#x22; we call `queryArray`, which runs each
+// In the case of the "schema builder" we call `queryArray`, which runs each
 // of the queries in sequence.
 queryArray: function queryArray(queries) {
   return queries.length === 1 ? this.query(queries[0]) : _bluebird2.default.bind(this).<span class="apidocCodeKeywordSpan">return
@@ -3595,7 +3588,7 @@ queryArray: function queryArray(queries) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function set(sql, bindings) {
   this.sql = sql;
-  this.bindings = (0, _isObject3.default)(bindings) &#x26;&#x26; !bindings.toSQL || (0, _isUndefined3.default)(bindings) ? bindings : [bindings
+  this.bindings = (0, _isObject3.default)(bindings) &amp;&amp; !bindings.toSQL || (0, _isUndefined3.default)(bindings) ? bindings : [bindings
 ];
 
   return this;
@@ -3642,7 +3635,7 @@ Target.prototype.stream = function (options) {
   return this.client.runner(this).<span class="apidocCodeKeywordSpan">stream</span>(options);
 };
 
-// Initialize a stream &#x26; pipe automatically.
+// Initialize a stream &amp; pipe automatically.
 Target.prototype.pipe = function (writable, options) {
   return this.client.runner(this).pipe(writable, options);
 };
@@ -3663,20 +3656,20 @@ Target.prototype.pipe = function (writable, options) {
   return promise[method].apply(promise, arguments);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      runner.builder.emit(&#x27;error&#x27;, err);
+      runner.builder.emit('error', err);
     }
     throw err;
   })
 
-  // Fire a single &#x22;end&#x22; event on the builder when
+  // Fire a single "end" event on the builder when
   // all queries have successfully completed.
   .<span class="apidocCodeKeywordSpan">tap</span>(function () {
-    runner.builder.emit(&#x27;end&#x27;);
+    runner.builder.emit('end');
   });
 },
 
 
-// Stream the result set, by passing through to the dialect&#x27;s streaming
+// Stream the result set, by passing through to the dialect's streaming
 // capabilities. If the options are
 ...</pre></li>
     </ul>
@@ -3695,20 +3688,20 @@ Target.prototype.pipe = function (writable, options) {
   return result.then.apply(result, arguments);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-.createTable(&#x27;accounts&#x27;, function(table) {
-  table.increments(&#x27;id&#x27;);
-  table.string(&#x27;account_name&#x27;);
-  table.integer(&#x27;user_id&#x27;).unsigned().references(&#x27;users.id&#x27;);
+.createTable('accounts', function(table) {
+  table.increments('id');
+  table.string('account_name');
+  table.integer('user_id').unsigned().references('users.id');
 })
 
 // Then query the table...
 .<span class="apidocCodeKeywordSpan">then</span>(function() {
-  return knex.insert({user_name: &#x27;Tim&#x27;}).into(&#x27;users&#x27;);
+  return knex.insert({user_name: 'Tim'}).into('users');
 })
 
 // ...and using the insert id, insert into the other table.
 .then(function(rows) {
-  return knex.table(&#x27;accounts&#x27;).insert({account_name: &#x27;knex&#x27;, user_id: rows[0]});
+  return knex.table('accounts').insert({account_name: 'knex', user_id: rows[0]});
 })
 ...</pre></li>
     </ul>
@@ -3739,11 +3732,11 @@ Target.prototype.pipe = function (writable, options) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function timeout(ms) {
-  var _ref = arguments.length &#x3c;= 1 || arguments[1] === undefined ? {} : arguments[1];
+  var _ref = arguments.length &lt;= 1 || arguments[1] === undefined ? {} : arguments[1];
 
   var cancel = _ref.cancel;
 
-  if ((0, _isNumber3.default)(ms) &#x26;&#x26; ms &#x3e; 0) {
+  if ((0, _isNumber3.default)(ms) &amp;&amp; ms &gt; 0) {
     this._timeout = ms;
     if (cancel) {
       this.client.assertCanCancelQuery();
@@ -3755,7 +3748,7 @@ Target.prototype.pipe = function (writable, options) {
     <li>example usage<pre class="apidocCodePre">...
 var _this = this;
 
-this.builder.emit(&#x27;query&#x27;, (0, _assign3.default)({ __knexUid: this.connection.__knexUid }, obj));
+this.builder.emit('query', (0, _assign3.default)({ __knexUid: this.connection.__knexUid }, obj));
 var runner = this;
 var queryPromise = this.client.query(this.connection, obj);
 
@@ -3765,9 +3758,9 @@ if (obj.timeout) {
 
 return queryPromise.then(function (resp) {
   var processedResponse = _this.client.processResponse(resp, runner);
-  _this.builder.emit(&#x27;query-response&#x27;, processedResponse, (0, _assign3.default)({ __knexUid: _this.connection.__knexUid
+  _this.builder.emit('query-response', processedResponse, (0, _assign3.default)({ __knexUid: _this.connection.__knexUid
  }, obj), _this.builder);
-  _this.client.emit(&#x27;query-response&#x27;, processedResponse, (0, _assign3.default)({ __knexUid: _this.connection.__knexUid
+  _this.client.emit('query-response', processedResponse, (0, _assign3.default)({ __knexUid: _this.connection.__knexUid
  }, obj), _this.builder);
   return processedResponse;
 ...</pre></li>
@@ -3789,7 +3782,7 @@ return queryPromise.then(function (resp) {
   if (!(0, _isArray3.default)(data)) data = [data];
   return (0, _map3.default)(data, function (statement) {
     return _this.client._formatQuery(statement.sql, statement.bindings, tz);
-  }).join(&#x27;;\n&#x27;);
+  }).join(';\n');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   this._wrappedAfter = after;
@@ -3825,11 +3818,11 @@ toSQL: function toSQL(method, tz) {
 
   if (Array.isArray(this.bindings)) {
     obj = replaceRawArrBindings(this, formatter);
-  } else if (this.bindings &#x26;&#x26; (0, _isPlainObject3.default)(this.bindings)) {
+  } else if (this.bindings &amp;&amp; (0, _isPlainObject3.default)(this.bindings)) {
     obj = replaceKeyBindings(this, formatter);
   } else {
     obj = {
-      method: &#x27;raw&#x27;,
+      method: 'raw',
       sql: this.sql,
       bindings: (0, _isUndefined3.default)(this.bindings) ? [] : [this.bindings]
     };
@@ -3854,7 +3847,7 @@ toSQL: function toSQL(method, tz) {
   obj.bindings = obj.bindings || [];
   if (helpers.containsUndefined(obj.bindings)) {
     debugBindings(obj.bindings);
-    throw new Error(&#x27;Undefined binding(s) detected when compiling RAW query: &#x27; + obj.sql);
+    throw new Error('Undefined binding(s) detected when compiling RAW query: ' + obj.sql);
   }
 
   obj.__knexQueryUid = _uuid2.default.v4();
@@ -3863,7 +3856,7 @@ toSQL: function toSQL(method, tz) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   }
-  return this.unwrapRaw(value, true) || &#x27;?&#x27;;
+  return this.unwrapRaw(value, true) || '?';
 };
 
 Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
@@ -3905,9 +3898,9 @@ Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">transacting = function (t) {
-  if (t &#x26;&#x26; t.client) {
+  if (t &amp;&amp; t.client) {
     if (!t.client.transacting) {
-      helpers.warn(&#x27;Invalid transaction value: &#x27; + t.client);
+      helpers.warn('Invalid transaction value: ' + t.client);
     } else {
       this.client = t.client;
     }
@@ -3934,18 +3927,18 @@ Formatter.prototype.unwrapRaw = function unwrapRaw(value, isParameter) {
     <li>example usage<pre class="apidocCodePre">...
 
 Formatter.prototype.columnize = function columnize(target) {
-  var columns = typeof target === &#x27;string&#x27; ? [target] : target;
-  var str = &#x27;&#x27;,
+  var columns = typeof target === 'string' ? [target] : target;
+  var str = '',
       i = -1;
-  while (++i &#x3c; columns.length) {
-    if (i &#x3e; 0) str += &#x27;, &#x27;;
+  while (++i &lt; columns.length) {
+    if (i &gt; 0) str += ', ';
     str += this.<span class="apidocCodeKeywordSpan">wrap</span>(columns[i]);
   }
   return str;
 };
 
-// Turns a list of values into a list of ?&#x27;s, joining them with commas unless
-// a &#x22;joining&#x22; value is specified (e.g. &#x27; and &#x27;)
+// Turns a list of values into a list of ?'s, joining them with commas unless
+// a "joining" value is specified (e.g. ' and ')
 ...</pre></li>
     </ul>
 
@@ -3984,14 +3977,14 @@ Formatter.prototype.columnize = function columnize(target) {
   this.builder = builder;
   this.queries = [];
 
-  // The &#x22;connection&#x22; object is set on the runner when
-  // &#x22;run&#x22; is called.
+  // The "connection" object is set on the runner when
+  // "run" is called.
   this.connection = void 0;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   return (0, _map3.default)(data, function (statement) {
     return _this.client._formatQuery(statement.sql, statement.bindings, tz);
-  }).join(&#x27;;\n&#x27;);
+  }).join(';\n');
 };
 
 // Create a new instance of the `Runner`, passing in the current object.
@@ -4000,7 +3993,7 @@ Target.prototype.then = function () /* onFulfilled, onRejected */{
   return result.then.apply(result, arguments);
 };
 
-// Add additional &#x22;options&#x22; to the builder. Typically used for client specific
+// Add additional "options" to the builder. Typically used for client specific
 // items, like the `mysql` and `sqlite3` drivers.
 Target.prototype.options = function (opts) {
   this._options = this._options || [];
@@ -4043,7 +4036,7 @@ Target.prototype.options = function (opts) {
     <li>example usage<pre class="apidocCodePre">...
 (0, _assign3.default)(Runner.prototype, {
 
-  // &#x22;Run&#x22; the target, calling &#x22;toSQL&#x22; on the builder, returning
+  // "Run" the target, calling "toSQL" on the builder, returning
   // an object or array of queries to run, each of which are run on
   // a single connection.
   run: function run() {
@@ -4051,8 +4044,8 @@ Target.prototype.options = function (opts) {
     return _bluebird2.default.using(this.<span class="apidocCodeKeywordSpan">ensureConnection</span>(), function (connection) {
 runner.connection = connection;
 
-runner.client.emit(&#x27;start&#x27;, runner.builder);
-runner.builder.emit(&#x27;start&#x27;, runner.builder);
+runner.client.emit('start', runner.builder);
+runner.builder.emit('start', runner.builder);
 var sql = runner.builder.toSQL();
 
 if (runner.builder._debug) {
@@ -4077,16 +4070,16 @@ Target.prototype.stream = function (options) {
   return this.client.runner(this).stream(options);
 };
 
-// Initialize a stream &#x26; pipe automatically.
+// Initialize a stream &amp; pipe automatically.
 Target.prototype.pipe = function (writable, options) {
   return this.client.runner(this).<span class="apidocCodeKeywordSpan">pipe</span>(writable, options);
 };
 
-// Creates a method which &#x22;coerces&#x22; to a promise, by calling a
-// &#x22;then&#x22; method on the current `Target`
-(0, _each3.default)([&#x27;bind&#x27;, &#x27;catch&#x27;, &#x27;finally&#x27;, &#x27;asCallback&#x27;, &#x27;spread&#x27;, &#x27
-;map&#x27;, &#x27;reduce&#x27;, &#x27;tap&#x27;, &#x27;thenReturn&#x27;, &#x27;return&#x27;, &#x27;yield&#x27;, &#x27;ensure&#x27
-;, &#x27;reflect&#x27;, &#x27;get&#x27;, &#x27;mapSeries&#x27;, &#x27;delay&#x27;], function (method) {
+// Creates a method which "coerces" to a promise, by calling a
+// "then" method on the current `Target`
+(0, _each3.default)(['bind', 'catch', 'finally', 'asCallback', 'spread', '
+;map', 'reduce', 'tap', 'thenReturn', 'return', 'yield', 'ensure'
+;, 'reflect', 'get', 'mapSeries', 'delay'], function (method) {
   Target.prototype[method] = function () {
     var promise = this.then();
 ...</pre></li>
@@ -4108,7 +4101,7 @@ Target.prototype.pipe = function (writable, options) {
     var value = tryCatch(fn).apply(this, arguments);
     var promiseCreated = ret._popContext();
     debug.checkForgottenReturns(
-        value, promiseCreated, &#x22;Promise.method&#x22;, ret);
+        value, promiseCreated, "Promise.method", ret);
     ret._resolveFromSyncValue(value);
     return ret;
 }</pre></li>
@@ -4123,11 +4116,11 @@ Target.prototype.pipe = function (writable, options) {
   return runner.<span class="apidocCodeKeywordSpan">query</span>(sql);
 })
 
-// If there are any &#x22;error&#x22; listeners, we fire an error event
+// If there are any "error" listeners, we fire an error event
 // and then re-throw the error to be eventually handled by
-// the promise chain. Useful if you&#x27;re wrapping in a custom `Promise`.
+// the promise chain. Useful if you're wrapping in a custom `Promise`.
 .catch(function (err) {
-  if (runner.builder._events &#x26;&#x26; runner.builder._events.error) {
+  if (runner.builder._events &amp;&amp; runner.builder._events.error) {
 ...</pre></li>
     </ul>
 
@@ -4162,9 +4155,9 @@ Target.prototype.pipe = function (writable, options) {
   return runner.query(sql);
 })
 
-// If there are any &#x22;error&#x22; listeners, we fire an error event
+// If there are any "error" listeners, we fire an error event
 // and then re-throw the error to be eventually handled by
-// the promise chain. Useful if you&#x27;re wrapping in a custom `Promise`.
+// the promise chain. Useful if you're wrapping in a custom `Promise`.
 ...</pre></li>
     </ul>
 
@@ -4182,8 +4175,8 @@ Target.prototype.pipe = function (writable, options) {
   return _bluebird2.default.using(this.ensureConnection(), function (connection) {
     runner.connection = connection;
 
-    runner.client.emit(&#x27;start&#x27;, runner.builder);
-    runner.builder.emit(&#x27;start&#x27;, runner.builder);
+    runner.client.emit('start', runner.builder);
+    runner.builder.emit('start', runner.builder);
     var sql = runner.builder.toSQL();
 
     if (runner.builder._debug) {
@@ -4196,26 +4189,26 @@ Target.prototype.pipe = function (writable, options) {
     return runner.query(sql);
   })
 
-  // If there are any &#x22;error&#x22; listeners, we fire an error event
+  // If there are any "error" listeners, we fire an error event
   // and then re-throw the error to be eventually handled by
-  // the promise chain. Useful if you&#x27;re wrapping in a custom `Promise`.
+  // the promise chain. Useful if you're wrapping in a custom `Promise`.
   .catch(function (err) {
-    if (runner.builder._events &#x26;&#x26; runner.builder._events.error) {
-      runner.builder.emit(&#x27;error&#x27;, err);
+    if (runner.builder._events &amp;&amp; runner.builder._events.error) {
+      runner.builder.emit('error', err);
     }
     throw err;
   })
 
-  // Fire a single &#x22;end&#x22; event on the builder when
+  // Fire a single "end" event on the builder when
   // all queries have successfully completed.
   .tap(function () {
-    runner.builder.emit(&#x27;end&#x27;);
+    runner.builder.emit('end');
   });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   return (0, _map3.default)(data, function (statement) {
     return _this.client._formatQuery(statement.sql, statement.bindings, tz);
-  }).join(&#x27;;\n&#x27;);
+  }).join(';\n');
 };
 
 // Create a new instance of the `Runner`, passing in the current object.
@@ -4224,7 +4217,7 @@ Target.prototype.then = function () /* onFulfilled, onRejected */{
   return result.then.apply(result, arguments);
 };
 
-// Add additional &#x22;options&#x22; to the builder. Typically used for client specific
+// Add additional "options" to the builder. Typically used for client specific
 // items, like the `mysql` and `sqlite3` drivers.
 Target.prototype.options = function (opts) {
   this._options = this._options || [];
@@ -4244,27 +4237,27 @@ Target.prototype.options = function (opts) {
 
   // If we specify stream(handler).then(...
   if (arguments.length === 1) {
-    if (typeof options === &#x27;function&#x27;) {
+    if (typeof options === 'function') {
       handler = options;
       options = {};
     }
   }
 
   // Determines whether we emit an error or throw here.
-  var hasHandler = typeof handler === &#x27;function&#x27;;
+  var hasHandler = typeof handler === 'function';
 
-  // Lazy-load the &#x22;PassThrough&#x22; dependency.
-  PassThrough = PassThrough || require(&#x27;readable-stream&#x27;).PassThrough;
+  // Lazy-load the "PassThrough" dependency.
+  PassThrough = PassThrough || require('readable-stream').PassThrough;
 
   var runner = this;
   var stream = new PassThrough({ objectMode: true });
   var promise = _bluebird2.default.using(this.ensureConnection(), function (connection) {
     runner.connection = connection;
     var sql = runner.builder.toSQL();
-    var err = new Error(&#x27;The stream may only be used with a single query statement.&#x27;);
+    var err = new Error('The stream may only be used with a single query statement.');
     if ((0, _isArray3.default)(sql)) {
       if (hasHandler) throw err;
-      stream.emit(&#x27;error&#x27;, err);
+      stream.emit('error', err);
     }
     return runner.client.stream(runner.connection, sql, stream, options);
   });
@@ -4278,7 +4271,7 @@ Target.prototype.options = function (opts) {
   }
 
   // This promise is unreachable since no handler was given, so noop any
-  // exceptions. Errors should be handled in the stream&#x27;s &#x27;error&#x27; event.
+  // exceptions. Errors should be handled in the stream's 'error' event.
   promise.catch(_noop3.default);
   return stream;
 }</pre></li>
@@ -4293,7 +4286,7 @@ Target.prototype.stream = function (options) {
   return this.client.runner(this).<span class="apidocCodeKeywordSpan">stream</span>(options);
 };
 
-// Initialize a stream &#x26; pipe automatically.
+// Initialize a stream &amp; pipe automatically.
 Target.prototype.pipe = function (writable, options) {
   return this.client.runner(this).pipe(writable, options);
 };
@@ -4319,14 +4312,14 @@ Target.prototype.pipe = function (writable, options) {
 
   var _this = (0, _possibleConstructorReturn3.default)(this, _EventEmitter.call(this));
 
-  var txid = _this.txid = (0, _uniqueId3.default)(&#x27;trx&#x27;);
+  var txid = _this.txid = (0, _uniqueId3.default)('trx');
 
   _this.client = client;
   _this.outerTx = outerTx;
   _this.trxClient = undefined;
-  _this._debug = client.config &#x26;&#x26; client.config.debug;
+  _this._debug = client.config &amp;&amp; client.config.debug;
 
-  debug(&#x27;%s: Starting %s transaction&#x27;, txid, outerTx ? &#x27;nested&#x27; : &#x27;top level&#x27;);
+  debug('%s: Starting %s transaction', txid, outerTx ? 'nested' : 'top level');
 
   _this._promise = _bluebird2.default.using(_this.acquireConnection(client, config, txid), function (connection) {
 
@@ -4336,8 +4329,8 @@ Target.prototype.pipe = function (writable, options) {
     init.then(function () {
       return makeTransactor(_this, connection, trxClient);
     }).then(function (transactor) {
-      // If we&#x27;ve returned a &#x22;thenable&#x22; from the transaction container, assume
-      // the rollback and commit are chained to this object&#x27;s success / failure.
+      // If we've returned a "thenable" from the transaction container, assume
+      // the rollback and commit are chained to this object's success / failure.
       // Directly thrown errors are treated as automatic rollbacks.
       var result = void 0;
       try {
@@ -4345,7 +4338,7 @@ Target.prototype.pipe = function (writable, options) {
       } catch (err) {
         result = _bluebird2.default.reject(err);
       }
-      if (result &#x26;&#x26; result.then &#x26;&#x26; typeof result.then === &#x27;function&#x27;) {
+      if (result &amp;&amp; result.then &amp;&amp; typeof result.then === 'function') {
         result.then(function (val) {
           return transactor.commit(val);
         }).catch(function (err) {
@@ -4365,7 +4358,7 @@ Target.prototype.pipe = function (writable, options) {
 
   _this._completed = false;
 
-  // If there&#x27;s a wrapping transaction, we need to wait for any older sibling
+  // If there's a wrapping transaction, we need to wait for any older sibling
   // transactions to settle (commit or rollback) before we can start, and we
   // need to register ourselves with the parent transaction so any younger
   // siblings can wait for us to complete before they can start.
@@ -4410,20 +4403,20 @@ if (trx.client.transacting) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function acquireConnection(client, config, txid) {
-  var configConnection = config &#x26;&#x26; config.connection;
+  var configConnection = config &amp;&amp; config.connection;
   return _bluebird2.default.try(function () {
     return configConnection || client.acquireConnection();
   }).disposer(function (connection) {
     if (!configConnection) {
-      debug(&#x27;%s: releasing connection&#x27;, txid);
+      debug('%s: releasing connection', txid);
       client.releaseConnection(connection);
     } else {
-      debug(&#x27;%s: not releasing external connection&#x27;, txid);
+      debug('%s: not releasing external connection', txid);
     }
   });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  // Check whether there&#x27;s a transaction flag, and that it has a connection.
+  // Check whether there's a transaction flag, and that it has a connection.
   ensureConnection: function ensureConnection() {
 var _this2 = this;
 
@@ -4467,12 +4460,12 @@ TimeoutError, function (error) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function begin(conn) {
-  return this.query(conn, &#x27;BEGIN;&#x27;);
+  return this.query(conn, 'BEGIN;');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    _this._debug = client.config &#x26;&#x26; client.config.debug;
+    _this._debug = client.config &amp;&amp; client.config.debug;
 
-    debug(&#x27;%s: Starting %s transaction&#x27;, txid, outerTx ? &#x27;nested&#x27; : &#x27;top level&#x27;);
+    debug('%s: Starting %s transaction', txid, outerTx ? 'nested' : 'top level');
 
     _this._promise = _bluebird2.default.using(_this.acquireConnection(client, config, txid), function (connection) {
 
@@ -4482,8 +4475,8 @@ var init = client.transacting ? _this.savepoint(connection) : _this.<span class=
 init.then(function () {
   return makeTransactor(_this, connection, trxClient);
 }).then(function (transactor) {
-  // If we&#x27;ve returned a &#x22;thenable&#x22; from the transaction container, assume
-  // the rollback and commit are chained to this object&#x27;s success / failure.
+  // If we've returned a "thenable" from the transaction container, assume
+  // the rollback and commit are chained to this object's success / failure.
   // Directly thrown errors are treated as automatic rollbacks.
 ...</pre></li>
     </ul>
@@ -4505,7 +4498,7 @@ init.then(function () {
   });
 }),
 
-// In the case of the &#x22;schema builder&#x22; we call `queryArray`, which runs each
+// In the case of the "schema builder" we call `queryArray`, which runs each
 // of the queries in sequence.
 queryArray: function queryArray(queries) {
   return queries.length === 1 ? this.query(queries[0]) : _bluebird2.default.<span class="apidocCodeKeywordSpan">bind</span>(this
@@ -4556,7 +4549,7 @@ queryArray: function queryArray(queries) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function commit(conn, value) {
-  return this.query(conn, &#x27;COMMIT;&#x27;, 1, value);
+  return this.query(conn, 'COMMIT;', 1, value);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   try {
@@ -4564,7 +4557,7 @@ queryArray: function queryArray(queries) {
   } catch (err) {
     result = _bluebird2.default.reject(err);
   }
-  if (result &#x26;&#x26; result.then &#x26;&#x26; typeof result.then === &#x27;function&#x27;) {
+  if (result &amp;&amp; result.then &amp;&amp; typeof result.then === 'function') {
     result.then(function (val) {
       return transactor.<span class="apidocCodeKeywordSpan">commit</span>(val);
     }).catch(function (err) {
@@ -4678,7 +4671,7 @@ queryArray: function queryArray(queries) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function isCompleted() {
-  return this._completed || this.outerTx &#x26;&#x26; this.outerTx.isCompleted() || false;
+  return this._completed || this.outerTx &amp;&amp; this.outerTx.isCompleted() || false;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     if (outerTx._lastChild) _this._previousSibling = outerTx._lastChild;
@@ -4688,12 +4681,12 @@ queryArray: function queryArray(queries) {
 }
 
 Transaction.prototype.isCompleted = function isCompleted() {
-  return this._completed || this.outerTx &#x26;&#x26; this.outerTx.<span class="apidocCodeKeywordSpan">isCompleted</span>() || false
+  return this._completed || this.outerTx &amp;&amp; this.outerTx.<span class="apidocCodeKeywordSpan">isCompleted</span>() || false
 ;
 };
 
 Transaction.prototype.begin = function begin(conn) {
-  return this.query(conn, &#x27;BEGIN;&#x27;);
+  return this.query(conn, 'BEGIN;');
 };
 
 Transaction.prototype.savepoint = function savepoint(conn) {
@@ -4714,9 +4707,9 @@ Transaction.prototype.savepoint = function savepoint(conn) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 .then(function() {
-  return knex(&#x27;users&#x27;)
-    .join(&#x27;accounts&#x27;, &#x27;users.id&#x27;, &#x27;accounts.user_id&#x27;)
-    .select(&#x27;users.user_name as user&#x27;, &#x27;accounts.account_name as account&#x27;);
+  return knex('users')
+    .join('accounts', 'users.id', 'accounts.user_id')
+    .select('users.user_name as user', 'accounts.account_name as account');
 })
 
 // .map over the results
@@ -4762,14 +4755,14 @@ Transaction.prototype.savepoint = function savepoint(conn) {
     status = 2;
     value = err;
     _this4._completed = true;
-    debug(&#x27;%s error running transaction query&#x27;, _this4.txid);
+    debug('%s error running transaction query', _this4.txid);
   }).tap(function () {
     if (status === 1) {
       _this4._resolver(value);
     }
     if (status === 2) {
       if ((0, _isUndefined3.default)(value)) {
-        value = new Error(&#x27;Transaction rejected with non-error: &#x27; + value);
+        value = new Error('Transaction rejected with non-error: ' + value);
       }
       _this4._rejecter(value);
     }
@@ -4790,11 +4783,11 @@ Transaction.prototype.savepoint = function savepoint(conn) {
   return runner.<span class="apidocCodeKeywordSpan">query</span>(sql);
 })
 
-// If there are any &#x22;error&#x22; listeners, we fire an error event
+// If there are any "error" listeners, we fire an error event
 // and then re-throw the error to be eventually handled by
-// the promise chain. Useful if you&#x27;re wrapping in a custom `Promise`.
+// the promise chain. Useful if you're wrapping in a custom `Promise`.
 .catch(function (err) {
-  if (runner.builder._events &#x26;&#x26; runner.builder._events.error) {
+  if (runner.builder._events &amp;&amp; runner.builder._events.error) {
 ...</pre></li>
     </ul>
 
@@ -4815,7 +4808,7 @@ Transaction.prototype.savepoint = function savepoint(conn) {
   });
 }),
 
-// In the case of the &#x22;schema builder&#x22; we call `queryArray`, which runs each
+// In the case of the "schema builder" we call `queryArray`, which runs each
 // of the queries in sequence.
 queryArray: function queryArray(queries) {
   return queries.length === 1 ? this.query(queries[0]) : _bluebird2.default.bind(this).return(queries).<span class="apidocCodeKeywordSpan
@@ -4854,7 +4847,7 @@ queryArray: function queryArray(queries) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function release(conn, value) {
-  return this.query(conn, &#x27;RELEASE SAVEPOINT &#x27; + this.txid + &#x27;;&#x27;, 1, value);
+  return this.query(conn, 'RELEASE SAVEPOINT ' + this.txid + ';', 1, value);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 };
@@ -4892,7 +4885,7 @@ if (trx.client.transacting) {
   });
 }),
 
-// In the case of the &#x22;schema builder&#x22; we call `queryArray`, which runs each
+// In the case of the "schema builder" we call `queryArray`, which runs each
 // of the queries in sequence.
 queryArray: function queryArray(queries) {
   return queries.length === 1 ? this.query(queries[0]) : _bluebird2.default.bind(this).<span class="apidocCodeKeywordSpan">return
@@ -4918,7 +4911,7 @@ queryArray: function queryArray(queries) {
     <li>description and source-code<pre class="apidocCodePre">function rollback(conn, error) {
   var _this2 = this;
 
-  return this.query(conn, &#x27;ROLLBACK;&#x27;, 2, error).timeout(5000).catch(_bluebird2.default.TimeoutError, function () {
+  return this.query(conn, 'ROLLBACK;', 2, error).timeout(5000).catch(_bluebird2.default.TimeoutError, function () {
     _this2._resolver();
   });
 }</pre></li>
@@ -4926,7 +4919,7 @@ queryArray: function queryArray(queries) {
   } catch (err) {
     result = _bluebird2.default.reject(err);
   }
-  if (result &#x26;&#x26; result.then &#x26;&#x26; typeof result.then === &#x27;function&#x27;) {
+  if (result &amp;&amp; result.then &amp;&amp; typeof result.then === 'function') {
     result.then(function (val) {
       return transactor.commit(val);
     }).catch(function (err) {
@@ -4952,7 +4945,7 @@ queryArray: function queryArray(queries) {
     <li>description and source-code<pre class="apidocCodePre">function rollbackTo(conn, error) {
   var _this3 = this;
 
-  return this.query(conn, &#x27;ROLLBACK TO SAVEPOINT &#x27; + this.txid, 2, error).timeout(5000).catch(_bluebird2.default.TimeoutError, function
+  return this.query(conn, 'ROLLBACK TO SAVEPOINT ' + this.txid, 2, error).timeout(5000).catch(_bluebird2.default.TimeoutError, function
  () {
     _this3._resolver();
   });
@@ -4986,12 +4979,12 @@ if (trx.client.transacting) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function savepoint(conn) {
-  return this.query(conn, &#x27;SAVEPOINT &#x27; + this.txid + &#x27;;&#x27;);
+  return this.query(conn, 'SAVEPOINT ' + this.txid + ';');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    _this._debug = client.config &#x26;&#x26; client.config.debug;
+    _this._debug = client.config &amp;&amp; client.config.debug;
 
-    debug(&#x27;%s: Starting %s transaction&#x27;, txid, outerTx ? &#x27;nested&#x27; : &#x27;top level&#x27;);
+    debug('%s: Starting %s transaction', txid, outerTx ? 'nested' : 'top level');
 
     _this._promise = _bluebird2.default.using(_this.acquireConnection(client, config, txid), function (connection) {
 
@@ -5001,8 +4994,8 @@ var init = client.transacting ? _this.<span class="apidocCodeKeywordSpan">savepo
 init.then(function () {
   return makeTransactor(_this, connection, trxClient);
 }).then(function (transactor) {
-  // If we&#x27;ve returned a &#x22;thenable&#x22; from the transaction container, assume
-  // the rollback and commit are chained to this object&#x27;s success / failure.
+  // If we've returned a "thenable" from the transaction container, assume
+  // the rollback and commit are chained to this object's success / failure.
   // Directly thrown errors are treated as automatic rollbacks.
 ...</pre></li>
     </ul>
@@ -5035,20 +5028,20 @@ init.then(function () {
   return this._promise = this._promise[method].apply(this._promise, arguments);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      runner.builder.emit(&#x27;error&#x27;, err);
+      runner.builder.emit('error', err);
     }
     throw err;
   })
 
-  // Fire a single &#x22;end&#x22; event on the builder when
+  // Fire a single "end" event on the builder when
   // all queries have successfully completed.
   .<span class="apidocCodeKeywordSpan">tap</span>(function () {
-    runner.builder.emit(&#x27;end&#x27;);
+    runner.builder.emit('end');
   });
 },
 
 
-// Stream the result set, by passing through to the dialect&#x27;s streaming
+// Stream the result set, by passing through to the dialect's streaming
 // capabilities. If the options are
 ...</pre></li>
     </ul>
@@ -5066,20 +5059,20 @@ init.then(function () {
   return this._promise = this._promise[method].apply(this._promise, arguments);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-.createTable(&#x27;accounts&#x27;, function(table) {
-  table.increments(&#x27;id&#x27;);
-  table.string(&#x27;account_name&#x27;);
-  table.integer(&#x27;user_id&#x27;).unsigned().references(&#x27;users.id&#x27;);
+.createTable('accounts', function(table) {
+  table.increments('id');
+  table.string('account_name');
+  table.integer('user_id').unsigned().references('users.id');
 })
 
 // Then query the table...
 .<span class="apidocCodeKeywordSpan">then</span>(function() {
-  return knex.insert({user_name: &#x27;Tim&#x27;}).into(&#x27;users&#x27;);
+  return knex.insert({user_name: 'Tim'}).into('users');
 })
 
 // ...and using the insert id, insert into the other table.
 .then(function(rows) {
-  return knex.table(&#x27;accounts&#x27;).insert({account_name: &#x27;knex&#x27;, user_id: rows[0]});
+  return knex.table('accounts').insert({account_name: 'knex', user_id: rows[0]});
 })
 ...</pre></li>
     </ul>
@@ -5123,3 +5116,4 @@ init.then(function () {
     ]
 </div>
 </div>
+</body></html>
