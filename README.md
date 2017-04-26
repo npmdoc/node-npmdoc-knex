@@ -1,6 +1,7 @@
 # npmdoc-knex
 
-api documentation for  [knex (v0.12.9)](https://github.com/tgriesser/knex#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-knex.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-knex) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-knex.svg)](https://travis-ci.org/npmdoc/node-npmdoc-knex)
+#### basic api documentation for  [knex (v0.12.9)](https://github.com/tgriesser/knex#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-knex.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-knex) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-knex.svg)](https://travis-ci.org/npmdoc/node-npmdoc-knex)
+
 #### A batteries-included SQL query & schema builder for Postgres, MySQL and SQLite3 and the Browser
 
 [![NPM](https://nodei.co/npm/knex.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/knex)
